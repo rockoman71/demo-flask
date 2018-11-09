@@ -18,9 +18,9 @@ node {
 
 	stage('Deploy image') {
 	  //   sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
-	     container = docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}'
+	     container = sh "docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}'"
 	     if (container != '') {
-		     docker rm \$(docker stop \$( container ))
+		     sh "docker rm \$(docker stop \$( container ))"
 	     }		
 	     sh "docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}"
 	}
