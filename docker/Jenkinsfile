@@ -16,7 +16,7 @@ node {
     } 
 
 	stage('Deploy image') {
-		"sh docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}"
+	     sh "docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}"
 	}
 	
 }
