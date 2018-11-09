@@ -21,8 +21,8 @@ node {
 	     sh "docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' > ps.id"
 	     def container = readFile("ps.id")
 		println container
-		if (container!=null) {
-			sh "docker rm \$(docker stop \$( ${container} ))"
+		if (container!='') {
+			sh "docker rm \$(docker stop \$(" + container + "))"
 	     }		
 	     sh "docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}"
 	}
