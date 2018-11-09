@@ -24,7 +24,7 @@ node {
 		if (container!='') {
 			sh "docker rm \$(docker stop \$(" + container + "))"
 	     }		
-	     sh "docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}"
+	     sh "docker run -d -p 9090:80 demo-flask:latest"
 	}
 	
 }
