@@ -11,8 +11,12 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-     	//sh "sed -i "'s/ver/ver1/g'" Dockerfile"    
-	//sh 'cp Dockerfile2 Dockerfile'    
         app = docker.build(image, "--build-arg ver=${BUILD_NUMBER} ./docker")
     } 
+
+	stage('Deploy image') {
+		'sh docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}'
+		
+	}
+	
 }
