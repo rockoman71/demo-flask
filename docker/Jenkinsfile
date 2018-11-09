@@ -3,7 +3,7 @@ node {
     def image = 'demo-flask'
     def jenkinsCredentials = 'docker'
     def gitRepo = "https://github.com/rockoman71/demo-flask.git"
-    def container
+    def container = ""
     
     stage('Get Source') {
 		   git gitRepo
