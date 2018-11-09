@@ -1,7 +1,6 @@
 node { 
     def app
-    def dockerRegistry = 'https://mycluster.icp:8500'
-    def image = 'devops/bgdemo'
+    def image = 'demo-flask'
     def jenkinsCredentials = 'docker'
     def gitRepo = "https://github.com/rockoman71/demo-flask.git"
     
