@@ -18,8 +18,8 @@ node {
 
 	stage('Deploy image') {
 	  //   sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
-	     def container = sh script: "docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}'", returnStdout: true
-		println container
+	     def container = sh (script: "docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}'", returnStdout: true).trim()
+		println ${container}
 		if (container!=null) {
 			sh "docker rm \$(docker stop \$( ${container} ))"
 	     }		
