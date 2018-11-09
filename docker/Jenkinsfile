@@ -3,6 +3,7 @@ node {
     def image = 'demo-flask'
     def jenkinsCredentials = 'docker'
     def gitRepo = "https://github.com/rockoman71/demo-flask.git"
+    def container
     
     stage('Get Source') {
 		   git gitRepo
@@ -16,7 +17,11 @@ node {
     } 
 
 	stage('Deploy image') {
-	     sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
+	  //   sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
+	     container = docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}'
+	     if (container != '') {
+		     docker rm \$(docker stop \$( container ))
+	     }		
 	     sh "docker run -d -p 9090:80 demo-flask:${BUILD_NUMBER}"
 	}
 	
