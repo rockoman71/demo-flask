@@ -3,7 +3,7 @@ node {
     def dockerRegistry = 'https://mycluster.icp:8500'
     def image = 'devops/bgdemo'
     def jenkinsCredentials = 'docker'
-    def gitRepo = "https://github.com/rockoman71/ucd-blue-green.git"
+    def gitRepo = "https://github.com/rockoman71/demo-flask.git"
     
     stage('Get Source') {
 		   git gitRepo
