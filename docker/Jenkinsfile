@@ -18,7 +18,7 @@ node {
 
 	stage('Deploy image') {
 		withEnv(["PATH=$PATH:/usr/local/bin"]){
-		    sh "docker-compose -f ./docker/docker-compose.yml up"
+		    sh "docker-compose -f ./docker/docker-compose.yml up -d"
 			
 		}
 	//	try {
