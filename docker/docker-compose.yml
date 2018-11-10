@@ -2,5 +2,6 @@ version: "2"
 services:
   app:
     build: .
+    image: demo-flask:latest
     ports:
       - "9090:80"
