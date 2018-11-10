@@ -18,7 +18,8 @@ node {
 
 	stage('Deploy image') {
 		withEnv(["PATH=$PATH:/usr/local/bin"]){
-		    sh "docker-compose up -f ./docker/docker-compose.yml"	
+		    sh "docker-compose -f ./docker/docker-compose.yml up"
+			
 		}
 	//	try {
 	//	    sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
