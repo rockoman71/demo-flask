@@ -17,18 +17,20 @@ node {
     } 
 
 	stage('Deploy image') {
-		try {
-		    sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
-		} catch(all) {
-			println "no image running... continue"
-		}
+		sh "docker-compose up"	
+		
+	//	try {
+	//	    sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
+	//	} catch(all) {
+	//		println "no image running... continue"
+	//	}
 	  //   sh "docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' > ps.id"
 	   //  def container = readFile("ps.id")
 	//	echo "$container"
 	//	if ("$container"!="") {
 	//		sh "docker rm \$(docker stop \$(" + container + "))"
 	  //   }		
-	     sh "docker run -d -p 9090:80 demo-flask:latest"
+	  //   sh "docker run -d -p 9090:80 demo-flask:latest"
 	}
 	
 }
