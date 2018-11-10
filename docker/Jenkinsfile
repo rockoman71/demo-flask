@@ -17,8 +17,9 @@ node {
     } 
 
 	stage('Deploy image') {
-		sh "docker-compose up"	
-		
+		withEnv(["PATH=$PATH"]){
+		    sh "docker-compose up"	
+		}
 	//	try {
 	//	    sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
 	//	} catch(all) {
