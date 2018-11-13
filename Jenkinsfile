@@ -22,7 +22,7 @@ pipeline {
     }
     stage('Static Analysis') {
       steps {
-        sh 'echi staticanalysis'
+        sh 'echo staticanalysis'
       }
     }
     stage('Deploy to Dev') {
