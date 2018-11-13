@@ -10,7 +10,7 @@ node {
 
 	stage('Test App') {
 		sh "sleep 10"
-    echo testApp
+                sh "echo testApp"
 	}
 	
 }
