@@ -30,5 +30,15 @@ pipeline {
         sh 'echo deployDev'
       }
     }
+    stage('Deploy to QA') {
+      steps {
+        sh 'echo DeployQA'
+      }
+    }
+    stage('Deploy to Prod') {
+      steps {
+        sh 'echo deployProd'
+      }
+    }
   }
 }
