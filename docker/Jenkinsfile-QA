@@ -4,23 +4,12 @@ node {
     def jenkinsCredentials = 'docker'
     def gitRepo = "https://github.com/rockoman71/demo-flask.git"
 
-	stage('Deploy image') {
-		withEnv(["PATH=$PATH:/usr/local/bin"]){
-		    sh "docker-compose -f ./docker/docker-compose.yml up -d"
-			
-		}
-	//	try {
-	//	    sh "docker rm \$(docker stop \$(docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' ))"
-	//	} catch(all) {
-	//		println "no image running... continue"
-	//	}
-	  //   sh "docker ps -a -f ancestor=demo-flask:latest --format='{{.ID}}' > ps.id"
-	   //  def container = readFile("ps.id")
-	//	echo "$container"
-	//	if ("$container"!="") {
-	//		sh "docker rm \$(docker stop \$(" + container + "))"
-	  //   }		
-	  //   sh "docker run -d -p 9090:80 demo-flask:latest"
+          stage('git') {
+		git gitRepo
+	  }
+
+	stage('Deploy QA') {
+		sh "echo deployQA"
 	}
 	
 }
