@@ -9,6 +9,7 @@ node {
 	  }
 
 	stage('Deploy Prod') {
+	        sh "sleep 10"
 		sh "echo deployProd"
 	}
 	
